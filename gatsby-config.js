@@ -38,5 +38,20 @@ module.exports = {
         trackingId: 'UA-171177495-3',
       },
     },
+    {
+      resolve: 'gatsby-plugin-firebase',
+      options: {
+        credentials: {
+          apiKey: 'AIzaSyA5VK6QvWRefWi6-WHGwCpc0jc4VHwNfwM',
+          authDomain: 'wapp-0001.firebaseapp.com',
+          databaseURL: 'https://wapp-0001.firebaseio.com',
+          projectId: 'wapp-0001',
+          storageBucket: 'wapp-0001.appspot.com',
+          messagingSenderId: '945135580824',
+          appId: '1:945135580824:web:bb4d7f21ad302bea5502ed',
+          measurementId: 'G-7CQ5PVS4HR',
+        },
+      },
+    },
   ],
 };
