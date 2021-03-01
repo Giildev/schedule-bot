@@ -18,9 +18,11 @@ function Table() {
     <table {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+          <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              <th key={column.id} {...column.getHeaderProps()}>
+                {column.render('Header')}
+              </th>
             ))}
           </tr>
         ))}
@@ -29,9 +31,13 @@ function Table() {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr key={row.id} {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return (
+                  <td key={cell.value} {...cell.getCellProps()}>
+                    {cell.render('Cell')}
+                  </td>
+                );
               })}
             </tr>
           );

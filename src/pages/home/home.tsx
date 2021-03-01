@@ -12,11 +12,9 @@ const Home = () => {
       <SEO title="Basic Home" />
       <Container>
         <Row>
-          <Col breakPoint={{ lg: 1 }}></Col>
-          <Col breakPoint={{ xs: 12, lg: 10 }}>
-            <Table></Table>
+          <Col>
+            <Table />
           </Col>
-          <Col breakPoint={{ lg: 1 }}></Col>
         </Row>
       </Container>
     </>
