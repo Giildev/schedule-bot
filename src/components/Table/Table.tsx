@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
-import { useTable } from 'react-table';
+import { useTable, Column } from 'react-table';
 import { COLUMNS } from './columns';
+import { ColumnProps } from './columns';
 import MOCK_DATA from '../../mock_data/MOCK_DATA.json';
 
 function Table() {
-  const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => MOCK_DATA, []);
+  const columns: Column<ColumnProps>[] = useMemo(() => COLUMNS, []);
+  const data: ColumnProps[] = useMemo(() => MOCK_DATA, []);
 
   const tableInstance = useTable({
     columns,
@@ -18,11 +19,9 @@ function Table() {
     <table {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
-          <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
+          <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th key={column.id} {...column.getHeaderProps()}>
-                {column.render('Header')}
-              </th>
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
             ))}
           </tr>
         ))}
@@ -31,13 +30,9 @@ function Table() {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr key={row.id} {...row.getRowProps()}>
+            <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return (
-                  <td key={cell.value} {...cell.getCellProps()}>
-                    {cell.render('Cell')}
-                  </td>
-                );
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
               })}
             </tr>
           );

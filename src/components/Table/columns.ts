@@ -1,4 +1,14 @@
-export const COLUMNS = [
+import { Column } from 'react-table';
+export interface ColumnProps {
+  client: string;
+  date: number | string;
+  phone: number | string;
+  resume: string;
+  status: string;
+  userID: number;
+}
+
+export const COLUMNS: Column<ColumnProps>[] = [
   {
     Header: 'Client',
     accessor: 'client',
