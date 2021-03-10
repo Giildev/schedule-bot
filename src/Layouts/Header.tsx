@@ -114,7 +114,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </Link>
               ),
             },
-            {
+            /*             {
               content: (
                 <SelectStyled
                   isSearchable={false}
@@ -125,7 +125,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   onChange={({ value }: { value: DefaultTheme['name'] }) => props.theme.set(value)}
                 />
               ),
-            },
+            }, */
           ]}
         />
       </HeaderStyle>
