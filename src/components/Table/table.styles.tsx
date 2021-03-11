@@ -9,6 +9,16 @@ export const StyledTable = styled.table`
   `}
 `;
 
+export const StyledTbody = styled.tbody`
+  padding: 2rem;
+`;
+
+export const StyledThead = styled.thead`
+  ${({ theme }) => css`
+    background-color: ${theme.sidebarMenuItemHighlightColor};
+  `}
+`;
+
 export const StyledTh = styled.th`
   ${({ theme }) => css`
     padding: ${theme.tabsetContentPadding};
@@ -21,12 +31,6 @@ export const StyledTr = styled.tr`
   `}
 `;
 
-export const StyledThead = styled.thead`
-  ${({ theme }) => css`
-    background-color: ${theme.sidebarMenuItemHighlightColor};
-  `}
-`;
-
 export const StyledTd = styled.td`
   ${({ theme }) => css`
     height: 7rem;
@@ -35,8 +39,4 @@ export const StyledTd = styled.td`
       width: 200px;
     }
   `}
-`;
-
-export const StyledTbody = styled.tbody`
-  padding: 2rem;
 `;
