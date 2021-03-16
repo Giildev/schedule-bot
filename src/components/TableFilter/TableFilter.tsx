@@ -1,4 +1,6 @@
 import React from 'react';
+import { StyledIcon, StyledLabel, StyledSearchInput } from './tableFilter.styles';
+import './style.css';
 
 interface Props {
   filter: string;
@@ -7,9 +9,10 @@ interface Props {
 
 const TableFilter = ({ filter, setFilter }: Props) => {
   return (
-    <span>
-      <input placeholder="Filter" value={filter || ''} onChange={(e) => setFilter(e.target.value)} />
-    </span>
+    <StyledLabel>
+      <StyledIcon status="Primary" name="search" />
+      <StyledSearchInput value={filter || ''} onChange={(e) => setFilter(e.target.value)}></StyledSearchInput>
+    </StyledLabel>
   );
 };
 

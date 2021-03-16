@@ -10,7 +10,9 @@ export const StyledTable = styled.table`
 `;
 
 export const StyledTbody = styled.tbody`
-  padding: 2rem;
+  ${({ theme }) => css`
+    padding: ${theme.tabsetContentPadding};
+  `}
 `;
 
 export const StyledThead = styled.thead`
@@ -28,6 +30,10 @@ export const StyledTh = styled.th`
 export const StyledTr = styled.tr`
   ${({ theme }) => css`
     border-bottom: 1px ${theme.dividerStyle} ${theme.colorBasic800};
+
+    &:last-child {
+      border-bottom: none;
+    }
   `}
 `;
 
