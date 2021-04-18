@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button } from '@paljs/ui/Button';
 import { InputGroup } from '@paljs/ui/Input';
 import { EvaIcon } from '@paljs/ui/Icon';
 import { Link } from 'gatsby';
+
+import { AuthContext } from '../../contexts/auth/authContext';
 
 import Auth, { Group } from '../../components/Auth';
 import Socials from '../../components/Auth/Socials';
@@ -10,11 +12,16 @@ import SEO from '../../components/SEO';
 import useAuth from '../../firebase/hooks/useAuth';
 
 export default function Login() {
+  const { userState, setUser } = useContext(AuthContext);
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
   const [handlers, user] = useAuth();
+
+  useEffect(() => {
+    if (user) setUser(user);
+  }, [user]);
 
   const handlerDefaultLogin = () => {
     if (form.email && form.password) {
