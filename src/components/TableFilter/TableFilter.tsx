@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyledIcon, StyledLabel, StyledSearchInput } from './tableFilter.styles';
-import './style.css';
 
 interface Props {
   filter: string;

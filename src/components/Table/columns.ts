@@ -1,11 +1,12 @@
 import { Column } from 'react-table';
 export interface ColumnProps {
+  id: string;
   client: string;
-  date: number | string;
+  date: any;
   phone: number | string;
   resume: string;
   status: string;
-  userID: number;
+  userId: string;
 }
 
 export const COLUMNS: Column<ColumnProps>[] = [
@@ -16,6 +17,10 @@ export const COLUMNS: Column<ColumnProps>[] = [
   {
     Header: 'Date',
     accessor: 'date',
+  },
+  {
+    Header: 'ID',
+    accessor: 'id',
   },
   {
     Header: 'Phone',
@@ -31,6 +36,6 @@ export const COLUMNS: Column<ColumnProps>[] = [
   },
   {
     Header: 'UserID',
-    accessor: 'userID',
+    accessor: 'userId',
   },
 ];
