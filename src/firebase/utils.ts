@@ -1,1 +1,5 @@
-export const formatResult = (data) => data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+export const formatResult = (data: any) =>
+  data.docs.map((doc: any) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));

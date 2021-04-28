@@ -1,16 +1,27 @@
-import React, { useMemo } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/jsx-key */
+/* eslint-disable prettier/prettier */
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTable, Column, useGlobalFilter } from 'react-table';
 import { COLUMNS } from './columns';
 import { ColumnProps } from './columns';
 import { StyledTable, StyledTh, StyledTd, StyledTbody, StyledThead, StyledTr } from './table.styles';
 import useGetSchedule from '../../firebase/hooks/useGetSchedule';
-import MOCK_DATA from '../../mock_data/MOCK_DATA.json';
 import TableFilter from '../TableFilter/TableFilter';
 
 function Table() {
   const [schedules, loading, error] = useGetSchedule();
   const columns: Column<ColumnProps>[] = useMemo(() => COLUMNS, []);
-  const data: any = useMemo(() => schedules, [loading]);
+  const [webo, setWebo] = useState<any>([]);
+
+  useEffect(() => {
+    schedules &&
+      schedules.map((data: any) => {
+        setWebo([...webo, data]);
+      });
+  }, [schedules]);
+
+  const data: any = useMemo(() => schedules, [schedules]);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, setGlobalFilter, state } = useTable(
     {
