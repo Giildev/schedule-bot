@@ -3,7 +3,7 @@ import { navigate } from 'gatsby';
 
 import { AuthContext } from '../../contexts/auth/authContext';
 
-import { login, signInWithGoogle, register, getToken } from '../queries/auth';
+import { login, signInWithGoogle, register, getToken, forgot } from '../queries/auth';
 
 const useAuth = () => {
   const { userState, setUser } = useContext(AuthContext);
@@ -56,10 +56,21 @@ const useAuth = () => {
       });
   };
 
+  const handleForgotPassword = (email) => {
+    forgot(email)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   const handler = {
     google: handleSignInWithGoogle,
     emailAndPassword: handleSignIn,
     register: handleRegister,
+    forgotPassword: handleForgotPassword,
   };
 
   return [handler, userState];

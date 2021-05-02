@@ -64,6 +64,9 @@ export default function Login() {
       <p>
         Don&apos;t have account? <Link to="/auth/register">Register</Link>
       </p>
+      <p>
+        Forgot Passowrd? <Link to="/auth/forgot-password">here</Link>
+      </p>
     </Auth>
   );
 }

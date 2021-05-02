@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@paljs/ui/Button';
 import { InputGroup } from '@paljs/ui/Input';
 import { Link } from 'gatsby';
@@ -6,15 +6,24 @@ import { Link } from 'gatsby';
 import SEO from '../../components/SEO';
 import Auth, { Group } from '../../components/Auth';
 
+import useAuth from '../../firebase/hooks/useAuth';
+
 export default function RequestPassword() {
+  const [email, setEmail] = useState('');
+  const [handlers, user] = useAuth();
+
+  const handleEmail = () => {
+    handlers.forgotPassword(email);
+  };
+
   return (
     <Auth title="Forgot Password" subTitle="Enter your email address and we’ll send a link to reset your password">
       <SEO title="Forgot Password" />
       <form>
         <InputGroup fullWidth>
-          <input type="email" placeholder="Email Address" />
+          <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
         </InputGroup>
-        <Button status="Success" type="button" shape="SemiRound" fullWidth>
+        <Button onClick={handleEmail} status="Success" type="button" shape="SemiRound" fullWidth>
           Request Password
         </Button>
       </form>

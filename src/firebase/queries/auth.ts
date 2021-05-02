@@ -8,13 +8,13 @@ export const login = (email, password) => auth().signInWithEmailAndPassword(emai
 
 export const register = (email, password) => auth().createUserWithEmailAndPassword(email, password);
 
+export const forgot = (email) => auth().sendPasswordResetEmail(email);
+
 export const getToken = () => {
   const user = auth().currentUser;
   return user?.getIdToken();
 };
 
-export const logout = () => {
-  firebase.auth().signOut();
-};
+export const logout = () => firebase.auth().signOut();
 
 export const signInWithGoogle = () => auth().signInWithPopup(googleProvider);
