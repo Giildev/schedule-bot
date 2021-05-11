@@ -12,12 +12,12 @@ import TableFilter from '../TableFilter/TableFilter';
 function Table() {
   const [schedules, loading, error] = useGetSchedule();
   const columns: Column<ColumnProps>[] = useMemo(() => COLUMNS, []);
-  const [webo, setWebo] = useState<any>([]);
+  const [schedule, setSchedule] = useState<any>([]);
 
   useEffect(() => {
     schedules &&
       schedules.map((data: any) => {
-        setWebo([...webo, data]);
+        setSchedule([...schedule, data]);
       });
   }, [schedules]);
 
