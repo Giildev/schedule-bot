@@ -7,6 +7,7 @@ import { SidebarRefObject } from '@paljs/ui/Sidebar';
 import Header from './Header';
 import SimpleLayout from './SimpleLayout';
 import SidebarCustom from './Sidebar';
+import { AuthProvider } from '../contexts/auth/authContext';
 
 const getDefaultTheme = (): DefaultTheme['name'] => {
   if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -40,30 +41,32 @@ const LayoutPage: React.FC<{ pageContext: { layout: string } }> = ({ children, p
   };
 
   return (
-    <ThemeProvider theme={themes(theme, dir)}>
-      <>
-        <SimpleLayout />
-        <Layout evaIcons={icons} dir={dir} className={pageContext.layout === 'auth' ? 'auth-layout' : ''}>
-          {pageContext.layout !== 'auth' && (
-            <Header
-              dir={dir}
-              changeDir={changeDir}
-              theme={{ set: changeTheme, value: theme }}
-              toggleSidebar={() => sidebarRef.current?.toggle()}
-            />
-          )}
-          <LayoutContainer>
-            {/* {pageContext.layout !== 'auth' && <SidebarCustom ref={sidebarRef} />} */}
-            <LayoutContent>
-              <LayoutColumns>
-                <LayoutColumn className="main-content">{children}</LayoutColumn>
-              </LayoutColumns>
-              {pageContext.layout !== 'auth' && <LayoutFooter>Footer</LayoutFooter>}
-            </LayoutContent>
-          </LayoutContainer>
-        </Layout>
-      </>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={themes(theme, dir)}>
+        <>
+          <SimpleLayout />
+          <Layout evaIcons={icons} dir={dir} className={pageContext.layout === 'auth' ? 'auth-layout' : ''}>
+            {pageContext.layout !== 'auth' && (
+              <Header
+                dir={dir}
+                changeDir={changeDir}
+                theme={{ set: changeTheme, value: theme }}
+                toggleSidebar={() => sidebarRef.current?.toggle()}
+              />
+            )}
+            <LayoutContainer>
+              {/* {pageContext.layout !== 'auth' && <SidebarCustom ref={sidebarRef} />} */}
+              <LayoutContent>
+                <LayoutColumns>
+                  <LayoutColumn className="main-content">{children}</LayoutColumn>
+                </LayoutColumns>
+                {pageContext.layout !== 'auth' && <LayoutFooter>Footer</LayoutFooter>}
+              </LayoutContent>
+            </LayoutContainer>
+          </Layout>
+        </>
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 

@@ -2,23 +2,21 @@ import React from 'react';
 import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 
+import withAuth from '../../contexts/auth/withAuth';
+
 import SEO from '../../components/SEO';
-import useGetSchedule from '../../firebase/hooks/useGetSchedule';
+import { Button } from '@paljs/ui/Button';
+import { navigate } from 'gatsby';
 
-const Accordions = () => {
-  const [data, loading, error] = useGetSchedule();
+const Home = () => (
+  <>
+    <SEO title="Home" />
+    <Row>
+      <Col breakPoint={{ xs: 12, lg: 12 }}>
+        <Button onClick={() => navigate('/example')}>Go to Example</Button>
+      </Col>
+    </Row>
+  </>
+);
 
-  console.log(loading)
-  console.log(data)
-
-  return (
-    <>
-      <SEO title="Basic Home" />
-      <Row>
-        <Col breakPoint={{ xs: 12, lg: 12 }}>Basic Home</Col>
-      </Row>
-    </>
-  );
-};
-
-export default Accordions;
+export default withAuth(Home);
