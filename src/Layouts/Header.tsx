@@ -4,12 +4,7 @@ import styled, { DefaultTheme } from 'styled-components';
 import Select from '@paljs/ui/Select';
 import { LayoutHeader } from '@paljs/ui/Layout';
 import { EvaIcon } from '@paljs/ui/Icon';
-import { Button } from '@paljs/ui/Button';
 import { Actions } from '@paljs/ui/Actions';
-import ContextMenu from '@paljs/ui/ContextMenu';
-import User from '@paljs/ui/User';
-import { getPathReady } from './Sidebar';
-import { Location } from '@reach/router';
 import { breakpointDown } from '@paljs/ui/breakpoints';
 
 const HeaderStyle = styled.div`
@@ -63,11 +58,11 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = (props) => {
   const themeOptions = [
     {
-      value: 'white',
+      value: 'light',
       label: (
         <Label>
           <EvaIcon name="droplet" options={{ fill: '#a6c1ff' }} />
-          White
+          Light
         </Label>
       ),
     },
@@ -119,7 +114,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </Link>
               ),
             },
-            {
+            /*             {
               content: (
                 <SelectStyled
                   isSearchable={false}
@@ -130,7 +125,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   onChange={({ value }: { value: DefaultTheme['name'] }) => props.theme.set(value)}
                 />
               ),
-            },
+            }, */
           ]}
         />
       </HeaderStyle>
